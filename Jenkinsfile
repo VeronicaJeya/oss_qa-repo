@@ -21,7 +21,7 @@ pipeline {
   
         stage('Git Checkout') {  
             steps {
-                git build1: 'build1', credentialsId: 'ssh_oss_v_dec5_Desc	', url: 'git@github.com:oss_qa-repo/ssh_oss_v_dec5_Desc'   
+                git build1: 'build1', credentialsId: 'ssh_oss_v_dec5_Desc', url: 'https://github.com/VeronicaJeya/ad-jenkins-qa-python.git'   
             }
         }
         
