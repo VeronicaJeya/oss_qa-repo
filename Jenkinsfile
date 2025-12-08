@@ -15,7 +15,7 @@ pipeline {
         stage('Python Version') {        
             steps {
                 sh 'python3 --version' 
-                echo "Python version displayed."
+                echo "Python version displayed"
             }
         } 
   
