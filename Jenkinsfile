@@ -37,7 +37,7 @@ echo "${ssh}"
 echo "${secrettext}"
 echo "${secrettext}"
 
-cat File
+
     }
     
         }
