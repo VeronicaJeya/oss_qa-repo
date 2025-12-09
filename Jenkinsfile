@@ -37,17 +37,6 @@ pipeline {
         }
     }
     
-    post {
-        always {
-            script {
-                emailext(
-                    subject: "pipeline-jenkinsfile-build-email",
-                    body: '${JELLY_SCRIPT, template="ad_default_template"}', 
-                    mimeType: 'text/html',
-                    to: 'jeya.veronica@agilitydelivered.com',           
-                                    
-                )
-            }
-        }
-    }
+   
+            
 }
