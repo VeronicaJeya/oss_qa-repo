@@ -5,7 +5,7 @@ pipeline {
         
         stage('Git Checkout') {     
             steps {
-                git branch: 'build2', credentialsId: 'ssh_dec5_v_ID', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
+                git branch: 'build3', credentialsId: 'ssh_dec5_v_ID', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
                 
             }
         }
@@ -19,28 +19,12 @@ pipeline {
                 
             }
         }
-        stage('parameterisedJob') {
-            steps {
-echo "${booleann}"
-echo "${choice}"
-
-echo "${multiline}"
-echo "${password}"
-echo "${string}"
-echo "${runparameter}"   
-echo "${runparameter_JOBNAME}"  
-echo "${runparameter_NUMBER}"
-echo "${runparameter_NAME}"
-echo "${runparameter_RESULT}"
-echo "${username}"
-echo "${ssh}"
-echo "${secrettext}"
-echo "${secrettext}"
+       
 
 
     }
     
-        }
-    }
-            
+        
 }
+            
+
