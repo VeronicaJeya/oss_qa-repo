@@ -5,7 +5,7 @@ pipeline {
         
         stage('Git Checkout') {     
             steps {
-                git branch: 'build1', credentialsId: 'ssh_dec5_v_ID', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git'    
+                git branch: 'build_invalid_cred', credentialsId: 'ssh_dec5_v_I..', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git'    
                 
             }
         }
