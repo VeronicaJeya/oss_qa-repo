@@ -16,7 +16,7 @@ pipeline {
     stage("Remove Dependencies") {
       steps {
        
-        rm -rf /var/lib/jenkins/.m2
+        sh 'rm -rf /var/lib/jenkins/.m2'
          
       }
     }
