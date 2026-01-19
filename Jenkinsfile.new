@@ -1,7 +1,7 @@
 pipeline {
   agent any
     tools {
-        maven 'maven:3-alpine'   
+        maven 'maven-3'   
         dockerTool 'docker'
     }
   
