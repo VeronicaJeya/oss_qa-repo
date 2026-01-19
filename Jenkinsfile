@@ -10,7 +10,7 @@ pipeline {
       steps {
          // clone the repository
          git 'https://github.com/CSPF-Founder/JavaVulnerableLab.git'
-         rm -rf /var/lib/jenkins/.m2
+         
       }
     }
 
