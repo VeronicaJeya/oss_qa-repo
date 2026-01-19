@@ -5,6 +5,7 @@ pipeline {
       args '-v /root/.m2:/root/.m2'
     }
   }
+  
   stages {
     stage("SCM Checkout") {
       steps {
@@ -14,11 +15,7 @@ pipeline {
       }
     }
 
-    stage("Remove maven dependencies") {
-      steps {
-         sh 'rm -rf /var/lib/jenkins/.m2'
-      }
-    }
+    
          stage("Build and Initiate SCA & SBOM Scans") {
             steps {
                // Build the application and run Dependency-Check-Maven & CodeDX SBOM plugins
