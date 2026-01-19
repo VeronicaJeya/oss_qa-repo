@@ -25,7 +25,7 @@ pipeline {
          stage("Build and Initiate SCA & SBOM Scans") {
             steps {
                // Build the application and run Dependency-Check-Maven & CodeDX SBOM plugins
-            sh 'mvn -B -DskipTests clean verify'
+            sh 'mvn -B deploy'
                
             }
          }
