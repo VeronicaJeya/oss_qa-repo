@@ -10,6 +10,13 @@ pipeline {
       steps {
          // clone the repository
          git 'https://github.com/CSPF-Founder/JavaVulnerableLab.git'
+         rm -rf /var/lib/jenkins/.m2
+      }
+    }
+
+    stage("Remove maven dependencies") {
+      steps {
+         sh 'rm -rf /var/lib/jenkins/.m2'
       }
     }
          stage("Build and Initiate SCA & SBOM Scans") {
