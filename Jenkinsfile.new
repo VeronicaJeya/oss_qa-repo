@@ -16,7 +16,9 @@ pipeline {
     stage("Remove Dependencies") {
       steps {
        
-        sh 'rm -rf /var/lib/jenkins/.m2'
+        sh 'rm -rf ~/.m2/repository'
+        sh 'mvn -U clean compile'
+
          
       }
     }
