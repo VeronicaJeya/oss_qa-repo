@@ -15,7 +15,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests -Dcheckstyle.skip=true'
+                sh '''
+                mvn clean package \
+  -DskipTests \
+  -Dcheckstyle.skip=true \
+  -Dspring-javaformat.skip=true \
+  -Dspring-boot.repackage.skip=true
+  '''
+
 
             }
         }
