@@ -61,16 +61,6 @@ pipeline {
             }
         }
 
-        stage('Run Application (Long)') {
-            steps {
-                timeout(time: 20, unit: 'MINUTES') {
-                    sh '''
-                      mvn spring-boot:run \
-                        -Dcheckstyle.skip=true \
-                        -Dspring-javaformat.skip=true
-                    '''
-                }
-            }
-        }
+        
     }
 }
