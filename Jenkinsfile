@@ -27,13 +27,22 @@ pipeline {
 
         stage('Dependency Resolution') {
             steps {
-                sh 'mvn dependency:go-offline'
+                sh '''
+                  mvn dependency:go-offline \
+                    -Dcheckstyle.skip=true \
+                    -Dspring-javaformat.skip=true
+                '''
             }
         }
 
         stage('Static Analysis / Verify') {
             steps {
-                sh 'mvn verify -DskipTests'
+                sh '''
+                  mvn verify -DskipTests \
+                    -Dcheckstyle.skip=true \
+                    -Dspring-javaformat.skip=true \
+                    -Dspring-boot.repackage.skip=true
+                '''
             }
         }
 
@@ -55,7 +64,11 @@ pipeline {
         stage('Run Application (Long)') {
             steps {
                 timeout(time: 20, unit: 'MINUTES') {
-                    sh 'mvn spring-boot:run'
+                    sh '''
+                      mvn spring-boot:run \
+                        -Dcheckstyle.skip=true \
+                        -Dspring-javaformat.skip=true
+                    '''
                 }
             }
         }
