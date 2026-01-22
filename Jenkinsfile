@@ -29,7 +29,8 @@ pipeline {
 
         stage('Run (long running)') {
             steps {
-                sh 'java -jar target/long-running-springboot-0.0.1-SNAPSHOT.jar'
+               sh 'java -jar target/*.jar'
+
             }
         }
     }
