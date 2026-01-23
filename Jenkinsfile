@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                   mvn clean package \
                     -DskipTests \
-                    -Dcheckstyle.skip=true \
+                   
                     -Dspring-javaformat.skip=true \
                     -Dspring-boot.repackage.skip=true
                 '''
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                   mvn dependency:go-offline \
-                    -Dcheckstyle.skip=true \
+                   
                     -Dspring-javaformat.skip=true
                 '''
             }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh '''
                   mvn verify -DskipTests \
-                    -Dcheckstyle.skip=true \
+                   
                     -Dspring-javaformat.skip=true \
                     -Dspring-boot.repackage.skip=true
                 '''
@@ -54,7 +54,7 @@ pipeline {
                     echo "Rebuild iteration $i"
                     mvn clean package \
                       -DskipTests \
-                      -Dcheckstyle.skip=true \
+                     
                       -Dspring-javaformat.skip=true \
                       -Dspring-boot.repackage.skip=true
                   done
