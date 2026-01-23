@@ -67,7 +67,7 @@ pipeline {
          stage('Artifact'){
             steps {
                echo 'Now Archiving...'
-               archiveArtifacts artifacts: '**/target/*.war'
+               archiveArtifacts artifacts: '**/target/*.jar'
 
             }
         }
