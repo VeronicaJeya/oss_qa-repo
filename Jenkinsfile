@@ -12,7 +12,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "172.31.40.209:8081"
         NEXUS_REPOSITORY = "vprofile-release"
-	NEXUS_REPO_ID    = "vprofile-release"
+		NEXUS_REPO_ID    = "vprofile-release"
         NEXUS_CREDENTIAL_ID = "nexuslogin"
         ARTVERSION = "${env.BUILD_ID}"
     }
@@ -62,19 +62,16 @@ pipeline {
 		    steps {
 		        withSonarQubeEnv('sonar-pro') {
 		            sh """
+		              java -version
 		              ${scannerHome}/bin/sonar-scanner \
 		              -Dsonar.projectKey=vprofile \
 		              -Dsonar.projectName=vprofile-repo \
-		              -Dsonar.projectVersion=1.0 \
 		              -Dsonar.sources=src \
-		              -Dsonar.java.binaries=target/classes \
-		              -Dsonar.junit.reportPaths=target/surefire-reports \
-		              -Dsonar.jacoco.reportPaths=target/jacoco.exec \
-		              -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
-		            """
-		        }
-		    }
-		}
+		              -Dsonar.java.binaries=target/classes
+				            """
+			        }
+			    }
+			}
             stage('Quality Gate') {
     			steps {
             		timeout(time: 10, unit: 'MINUTES') {
