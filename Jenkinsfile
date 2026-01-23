@@ -12,7 +12,7 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "172.31.40.209:8081"
         NEXUS_REPOSITORY = "vprofile-release"
-		NEXUS_REPO_ID    = "vprofile-release"
+	NEXUS_REPO_ID    = "vprofile-release"
         NEXUS_CREDENTIAL_ID = "nexuslogin"
         ARTVERSION = "${env.BUILD_ID}"
     }
@@ -53,34 +53,32 @@ pipeline {
                 }
             }
         }
+
         stage('CODE ANALYSIS with SONARQUBE') {
-		    environment {
-		        scannerHome = tool 'sonarscanner4'
-		    }
+          
+		  environment {
+             scannerHome = tool 'sonarscanner4'
+          }
 
-		    steps {
-		        withSonarQubeEnv('sonar-pro') {
-		            sh """
-		              java -version
-		              ${scannerHome}/bin/sonar-scanner \
-		              -Dsonar.projectKey=vprofile \
-		              -Dsonar.projectName=vprofile-repo \
-		              -Dsonar.sources=src \
-		              -Dsonar.java.binaries=target/classes
-				            """
-			        }
-			    }
+          steps {
+            withSonarQubeEnv('sonar-pro') {
+               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+                   -Dsonar.projectName=vprofile-repo \
+                   -Dsonar.projectVersion=1.0 \
+                   -Dsonar.sources=src/ \
+                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
+                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+            }
 
-            stage('Quality Gate') {
-    			steps {
-            		timeout(time: 10, unit: 'MINUTES') {
-               		waitForQualityGate abortPipeline: true
+            timeout(time: 10, unit: 'MINUTES') {
+               waitForQualityGate abortPipeline: true
             }
           }
         }
 
-       
-        }
+        
 
 
     }
