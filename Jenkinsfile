@@ -53,7 +53,24 @@ pipeline {
                 }
             }
         }
-       
+        stage('CODE ANALYSIS with SONARQUBE') {
+		    environment {
+		        scannerHome = tool 'sonarscanner4'
+		    }
+
+		    steps {
+		        withSonarQubeEnv('sonar-pro') {
+		            sh """
+		              java -version
+		              ${scannerHome}/bin/sonar-scanner \
+		              -Dsonar.projectKey=vprofile \
+		              -Dsonar.projectName=vprofile-repo \
+		              -Dsonar.sources=src \
+		              -Dsonar.java.binaries=target/classes
+				            """
+			        }
+			    }
+
             stage('Quality Gate') {
     			steps {
             		timeout(time: 10, unit: 'MINUTES') {
