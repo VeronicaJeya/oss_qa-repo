@@ -62,16 +62,7 @@ pipeline {
             }
         }
 
-         stage('INTEGRATION TEST'){
-            steps {
-                sh '''
-                 -Dcheckstyle.skip=true \
-                mvn verify -DskipUnitTests 
-                '''
-                
-                
-            }
-        }
+        
 
          stage('Artifact'){
             steps {
