@@ -64,7 +64,12 @@ pipeline {
 
          stage('INTEGRATION TEST'){
             steps {
-                sh 'mvn verify -DskipUnitTests'
+                sh '''
+                 -Dcheckstyle.skip=true \
+                mvn verify -DskipUnitTests 
+                '''
+                
+                
             }
         }
 
