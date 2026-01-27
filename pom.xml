@@ -7,7 +7,7 @@
     <name>Maven Spring Boot Testing Example</name>
     <packaging>war</packaging>
     <properties>
-        <target.jdk>1.7</target.jdk>
+        <target.jdk>1.8</target.jdk>
         <surefire.version>2.19</surefire.version>
         <tomcat.host.name>localhost</tomcat.host.name>
         <tomcat.version>7.0.52</tomcat.version>
