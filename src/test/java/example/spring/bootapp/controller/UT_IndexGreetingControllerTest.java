@@ -19,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring-mvc-config.xml"})
 @WebAppConfiguration
-@Test
+
 public class UT_IndexGreetingControllerTest
 {
     @Autowired
