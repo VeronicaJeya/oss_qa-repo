@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'REPLACE_WITH_YOUR_GITHUB_REPO_URL'
+                checkout scm
             }
         }
 
