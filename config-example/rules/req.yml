@@ -1,0 +1,34 @@
+# HTTP request testing rule - tests HTTP status codes and responses
+# Demonstrates conditional response formatting based on HTTP status
+
+# Rule metadata
+name: request tester
+active: true
+
+# Trigger configuration
+respond: req  # Matches when users type "req"
+args:
+  - code  # Requires HTTP status code argument (e.g., "200", "404", "500")
+
+# Actions
+actions:
+  - name: bad http request
+    type: GET
+    url: https://httpbin.org/status/${code}  # Test endpoint that returns specified status
+    auth:
+      # Note: auth field intentionally empty - used for storing values in this example
+    expose_json_fields:
+      resp: |-
+        {{ if ge ${_raw_http_status} 400 }}
+          remote responded with status higher or equal to 400
+        {{ else }}
+          bam - what a request
+        {{ end }}
+
+# Response configuration
+format_output: "${resp}"  # Display conditional response based on status code
+direct_message_only: false
+
+# Help configuration
+help_text: req <code>  # Usage: req 200, req 404, etc.
+include_in_help: true

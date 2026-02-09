@@ -1,0 +1,98 @@
+version: "2"
+output:
+  formats:
+    text:
+      path: stdout
+      print-linter-name: true
+      print-issued-lines: true
+linters:
+  default: none
+  enable:
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - copyloopvar
+    - dupl
+    - errcheck
+    - errorlint
+    - funlen
+    - goconst
+    - gocyclo
+    - godot
+    - goheader
+    - gomoddirectives
+    - goprintffuncname
+    - gosec
+    - govet
+    - ineffassign
+    - makezero
+    - misspell
+    - nakedret
+    - nilerr
+    - noctx
+    - nolintlint
+    - revive
+    - staticcheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+    - wsl_v5
+  settings:
+    funlen:
+      lines: 160
+      statements: 70
+    gocyclo:
+      min-complexity: 18
+    goheader:
+      template: "SPDX-License-Identifier: Apache-2.0"
+    misspell:
+      locale: US
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+      allow-unused: false
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - dupl
+          - funlen
+          - goconst
+          - gocyclo
+        path: _test\.go
+    paths:
+      - testdata
+      - helm
+      - config-example
+      - config
+      - third_party$
+      - builtin$
+      - examples$
+issues:
+  uniq-by-line: true
+formatters:
+  enable:
+    - gci
+    - gofmt
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/target/flottbot)
+  exclusions:
+    generated: lax
+    paths:
+      - testdata
+      - helm
+      - config-example
+      - config
+      - third_party$
+      - builtin$
+      - examples$

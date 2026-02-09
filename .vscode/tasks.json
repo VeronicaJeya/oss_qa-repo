@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-debug",
+      "type": "shell",
+      "command": "go",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared"
+      },
+      "args": [
+        "build",
+        "-gcflags",
+        "'-N -l'",
+        "-o",
+        "debug",
+        "${workspaceFolder}/cmd/flottbot/main.go"
+      ],
+      "problemMatcher": [
+        "$go"
+      ]
+    }
+  ]
+}

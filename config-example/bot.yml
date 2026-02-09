@@ -1,0 +1,57 @@
+# metadata (for logging)
+name: flottbot # EDIT this (name of your bot)
+
+# chat applications
+## slack
+chat_application: slack # EDIT (network to use, e.g. 'slack')
+slack_token: ${SLACK_TOKEN} # EDIT ${SLACK_TOKEN}
+
+## discord
+# chat_application: discord
+# discord_token: ${DISCORD_TOKEN}
+
+# system
+cli: true # leave this to be true as default
+# true: enables ability to turn on CLI mode.
+# false: disables ability to turn on CLI mode.
+cli_user: admin # optional
+
+scheduler: false
+# true: enables rule scheduling
+# false: disables rule scheduling
+
+debug: true
+# true: enable logging to console
+# false: disable logging
+
+## heroku deploys require an injected listener port; only works for Slack Apps
+# slack_listener_port: ${PORT}
+
+# for prometheus metrics capabilities
+metrics: false
+# true: enables prometheus metrics on localhost port 8080
+# false: disable prometheus metrics
+
+# Optional
+# If you just want to customize default text of help, and keep help generation as is
+# custom_help_text_prefix: "Hello from flotbot! I understand these commands:"
+
+# Optional
+# If you want to customize your help text
+# custom_help_text: >
+#   I can help you with this stuff:
+#   ```announce <your annoucement>```
+#   ```cats```
+#   ```fotd```
+#   ```gopher```
+#   ```issue <org> <repo> <title> <assignee>```
+#   ```joke```
+#   ```number <value>```
+#   ```pokemon <pokemon name>```
+#   ```praise <your friend>```
+#   ```today```
+#   ```weather <Location>```
+#   ```xkcd```
+
+# If you want to disable help message for unmatched rule
+# disable_no_match_help: true

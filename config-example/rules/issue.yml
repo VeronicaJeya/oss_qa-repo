@@ -1,0 +1,51 @@
+# GitHub issue creation rule - creates new GitHub issues via API
+# Demonstrates POST requests, authentication, and reaction updates
+
+# Rule metadata
+name: issue
+active: true
+
+# Trigger configuration
+respond: issue  # Matches when users type "issue"
+args:
+  - org      # GitHub organization name
+  - repo     # Repository name
+  - title    # Issue title
+  - assignee # GitHub username to assign the issue to
+reaction: eyes  # Initial reaction while processing
+
+# Actions
+actions:
+  - name: github issue http request
+    type: POST
+    url: https://api.github.com/v3/repos/${org}/${repo}/issues
+    query_data:
+      title: "${title}"
+      body: "TODO: Fill in the deets.\n ACCEPTANCE CRITERIA:"
+      assignees:
+        - "${assignee}"
+      labels:
+        - "bug"  # Default label
+    custom_headers:
+      Authorization: token ${GHE_TOKEN}  # Requires GHE_TOKEN environment variable
+      Accept: 'application/vnd.github.v3+json'
+      Content-Type: 'application/json'
+    auth:
+    expose_json_fields:
+      title: '.title'
+      url: '.html_url'
+      assignees: '.assignee.login'
+    update_reaction: |-
+      {{ if (eq `${_raw_http_status}` "201") }}
+        white_check_mark
+      {{ else }}
+        exclamation
+      {{ end }}
+
+# Response configuration
+format_output: "${title} has been created, and assigned to ${assignees} and can be found at ${url}. status: ${_raw_http_status}"
+direct_message_only: false
+
+# Help configuration
+help_text: "issue <org> <repo> <title> <assignee>"  # Usage: issue myorg myrepo "Bug title" johndoe
+include_in_help: true

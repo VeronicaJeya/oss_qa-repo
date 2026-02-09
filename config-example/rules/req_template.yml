@@ -1,0 +1,33 @@
+# HTTP request with template formatting rule - demonstrates advanced response templating
+# Shows conditional formatting based on HTTP status codes in format_output
+
+# Rule metadata
+name: test template in format output
+active: true
+
+# Trigger configuration
+respond: reqtemp  # Matches when users type "reqtemp"
+args:
+  - code  # HTTP status code to test (e.g., "200", "418", "500")
+
+# Actions
+actions:
+  - name: bad http request
+    type: GET
+    url: https://httpbin.org/status/${code}  # Test endpoint that returns specified status
+    auth:
+
+# Response configuration - demonstrates template conditionals
+format_output: |-
+  {{ if eq ${_raw_http_status} 418 }}
+    TEAPOT! ${_raw_http_output}
+  {{ else if ge ${_raw_http_status} 500 }}
+    uh, server in flames!
+  {{ else }}
+    it werks
+  {{ end }}
+direct_message_only: false
+
+# Help configuration
+help_text: reqtemp <statuscode>  # Usage: reqtemp 418, reqtemp 500
+include_in_help: true

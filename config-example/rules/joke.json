@@ -1,0 +1,22 @@
+{
+  "name": "joke-json-rule",
+  "active": true,
+  "respond": "joke-json",
+  "actions": [
+    {
+      "name": "joke http request",
+      "type": "GET",
+      "url": "https://icanhazdadjoke.com/",
+      "expose_json_fields": {
+        "joke": ".setup"
+      },
+      "custom_headers": {
+        "Accept": "application/json"
+      }
+    }
+  ],
+  "format_output": "${joke}",
+  "direct_message_only": false,
+  "help_text": "joke",
+  "include_in_help": true
+}

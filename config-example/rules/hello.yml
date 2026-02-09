@@ -1,0 +1,24 @@
+# Simple greeting rule - responds with a friendly message when users say "hello"
+# This demonstrates basic text matching and user variable substitution
+
+# Rule metadata
+name: hello
+active: true
+
+# Trigger configuration
+respond: hello  # Matches when users type "hello"
+args:
+  # No arguments required - just matches the trigger word
+
+# Actions
+actions:
+  # No actions needed - this rule only responds with text
+
+# Response configuration
+format_output: "what's up, ${_user.name}?"  # Uses the user's name in response
+start_message_thread: true   # Creates a threaded response
+direct_message_only: false   # Works in both channels and DMs
+
+# Help configuration
+help_text: hello
+include_in_help: true
