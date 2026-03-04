@@ -19,10 +19,10 @@ pipeline {
         }
         stage('Author Name') {
             steps {
-                sh '''        
-                    echo "Commit Author: ${env.GIT_AUTHOR_NAME}"
-                    echo "Commit Email: ${env.GIT_AUTHOR_EMAIL}"
-                     '''                
+                sh '''
+                    echo "Commit Author: $GIT_AUTHOR_NAME"
+                    echo "Commit Email: $GIT_AUTHOR_EMAIL"
+                '''
             }
         }
     }                 
