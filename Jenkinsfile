@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                     echo "Commit Author: $GIT_AUTHOR_NAME"
                     echo "Commit Email: $GIT_AUTHOR_EMAIL"
-                    echo "4.3.26-1"
+                    echo "4.3.26"
                 '''
             }
         }
