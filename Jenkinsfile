@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Build') {
+                    steps {
+                        cleanWs()
+                    }
+                }
+        
         stage('Checkout') {
             steps {
                 git branch: 'restartStage', credentialsId: 'oss-ad-pat-Jan30', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
