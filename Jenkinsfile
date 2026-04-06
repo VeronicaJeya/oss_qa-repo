@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'restartStage', credentialsId: 'oss-ad-pat-Jan30', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
+                git branch: 'restartStageOwnOSS', credentialsId: 'oss-April2026', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
                 sh 'git rev-parse HEAD > commit.txt'
                 sh 'cat commit.txt'
             }
