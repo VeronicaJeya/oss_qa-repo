@@ -1,4 +1,4 @@
-<project name="ant-sample" basedir="." default="build">
+<project name="ant-sample" basedir=".">
 
     <!-- properties -->
     <property name="src.dir"     value="src"/>
