@@ -33,7 +33,7 @@
     </target>
 
     <target name="run" depends="compile" description="run application">       
-            <java classname="piona.Gain"
+            <java classname="piona.Main"
               classpath="${classes.dir}"
               fork="true" />
     </target>
