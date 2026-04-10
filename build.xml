@@ -1,4 +1,4 @@
-<project name="ant-sample" basedir=".">
+<project name="ant-sample" basedir="." default="run">
 
     <!-- properties -->
     <property name="src.dir"     value="src"/>
@@ -8,6 +8,16 @@
     <property name="doc.dir"     value="doc"/>
 
     <!-- targets -->
+
+    <target name="hello" description="hello desc">
+        <echo message="Hello, Ant is working!" />
+    </target>
+
+    <target name="greet">
+        <property name="username" value="TestUser"/>
+        <echo message="Welcome, ${username}!" />
+    </target>
+
     <target name="compile" description="compile project">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
@@ -22,8 +32,10 @@
         </jar>
     </target>
 
-    <target name="run" depends="jar" description="run application">
-        <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+    <target name="run" depends="compile" description="run application">       
+            <java classname="piona.Gain"
+              classpath="${classes.dir}"
+              fork="true" />
     </target>
 
     <target name="build" depends="jar" description="build application"/>
