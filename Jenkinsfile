@@ -6,7 +6,7 @@ pipeline {
         stage('Git Checkout') {     
             steps {
                 git branch: 'build1', credentialsId: 'ssh_dec5_v_ID', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git'   
-                echo "22.4.26-4"
+                echo "22.4.26-5"
                 
             }
         }
