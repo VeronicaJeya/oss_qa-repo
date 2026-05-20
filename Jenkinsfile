@@ -1,37 +1,33 @@
 pipeline {          
     agent any         
     
-    stages {        
-
-        stage('Clean Workspace') {
+    stages {  
+        stage('Clean workspace') {  
             steps {
                 cleanWs()
             }
         }
         
-        stage('Git Checkout') {     
+        
+        stage('Git Checkout') {  
             steps {
-                git branch: 'build1', credentialsId: 'ssh_dec5_v_ID', url: 'git@github.com:VeronicaJeya/oss_qa-repo.git'   
-                echo "22.4.26-5"
+                git branch: 'build1', credentialsId: 'pat-may15-v-ID', url: 'https://github.com/VeronicaJeya/oss_qa-repo.git' 
                 
             }
         }
         
         stage('Build') {
             steps {
-                sh '''                             
-                    python3 list_akanksha.py                                         
-                '''                
-            }
-        }
-        stage('Author Name') {
-            steps {
                 sh '''
-                    echo "Commit Author: $GIT_AUTHOR_NAME"
-                    echo "Commit Email: $GIT_AUTHOR_EMAIL"
-                    echo "4.3.26"
+                    apt update
+                    apt install -y python3  
+                    python3 list_akanksha.py                                         
                 '''
+                
             }
         }
-    }                 
+    }
+    
+   
+            
 }
